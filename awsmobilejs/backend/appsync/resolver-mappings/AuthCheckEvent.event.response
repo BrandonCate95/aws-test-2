@@ -1,0 +1,5 @@
+##if ($context.source.Owner == $context.identity.username)
+  $util.toJson($ctx.result)
+##else
+##  $utils.unauthorized()
+##end

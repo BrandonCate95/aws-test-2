@@ -1,0 +1,4 @@
+{
+    "name": "aws-test-2",
+    "authenticationType": "AWS_IAM"
+}

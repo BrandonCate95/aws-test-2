@@ -1,0 +1,19 @@
+{
+   "version" : "2017-02-28",
+   "operation" : "UpdateItem",
+   "key" : {
+      "postId" : { "S" : "${context.arguments.id}" }
+   },
+   "attributeValues" : {
+      "Author" : {"S" : "${context.request.headers.username}"}
+      #foreach( $entry in $context.arguments.entrySet() )
+         ,"${entry.key}" : { "S" : "${entry.value}" }
+      #end
+   },
+   "condition" : {
+      "expression"       : "Author = :authorName",
+      "expressionValues" : {
+         ":authorName"      : { "S" : "${context.request.headers.username}" }
+      }
+   }
+}
